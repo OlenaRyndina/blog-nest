@@ -12,10 +12,14 @@ const config: DataSourceOptions = {
   synchronize: true,
   migrationsRun: false,
   logging: true,
-  migrations: ["dist/src/**/db/migrations/*{.ts,.js}"],
-  /*"cli": {
-    "migrationsDir": "db/migrations"
+  migrations: [
+      "dist/src/**/db/migrations/*{.ts,.js}",
+      "dist/src/modules/**/db/migrations/*{.ts, .js}",
+      "dist/*{.ts, .js}"]/*,
+  cli: {
+    migrationsDir: "db/migrations"
   }*/
 };
 
 export default config;
+
