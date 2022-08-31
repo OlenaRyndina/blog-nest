@@ -1,4 +1,4 @@
-import { DataSource } from "typeorm";
+import { DataSource, DataSourceOptions } from "typeorm";
 
 const configMigration = new DataSource({
   type: "mysql",
@@ -12,10 +12,15 @@ const configMigration = new DataSource({
   synchronize: true,
   migrationsRun: false,
   logging: true,
-  migrations: ["dist/src/**/db/migrations/*{.ts,.js}"],
-  /*"cli": {
-    "migrationsDir": "db/migrations"
-  }*/
-});
+  migrations: [
+      "dist/src/**/db/migrations/*{.ts,.js}",
+      "dist/src/modules/**/db/migrations/*{.ts, .js}",
+      "dist/*{.ts, .js}"],
+  cli: {
+    migrationsDir: "db/migrations"
+  }
+} as DataSourceOptions);
+
+configMigration.initialize();
 
 export default configMigration;
