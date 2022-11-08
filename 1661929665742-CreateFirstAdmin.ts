@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Repository } from "typeorm";
+import { MigrationInterface, QueryRunner, Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
 import { Admin } from './src/modules/admin/model/admin.entity';

@@ -5,9 +5,11 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { AuthService } from './service/auth.service';
+import { RegistrationService } from './service/registration.service';
 import { LocalStrategy } from './service/local.strategy';
 import { JwtStrategy } from './service/jwt.strategy';
 import { AuthController } from './controller/auth.controller';
+import { RegistationController } from './controller/registration.controller';
 
 @Module({
     imports: [
@@ -24,10 +26,12 @@ import { AuthController } from './controller/auth.controller';
         })
     ],
     controllers: [
-        AuthController
+        AuthController,
+        RegistationController
     ],
     providers: [
         AuthService,
+        RegistrationService,
         LocalStrategy,
         JwtStrategy
     ],

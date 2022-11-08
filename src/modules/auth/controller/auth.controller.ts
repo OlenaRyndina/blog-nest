@@ -14,7 +14,7 @@ export class AuthController {
 	) {
 		this.adminRepository = this.connection.getRepository(Admin);
 	}
-
+ 
 	@UseGuards(AuthGuard('local'))
 	@Post('login')	
 	async login(@Request() req) {
@@ -31,7 +31,7 @@ export class AuthController {
 	@UseGuards(AuthGuard('jwt'))
 	@Post('refresh')	
 	async refresh(@Request() req) {
-		const admin = await this.adminRepository.findOne(req.user.id);
+		const admin = await this.adminRepository.findOneBy(req.user.id);
 		return this.authService.login(admin);
 	}
 }

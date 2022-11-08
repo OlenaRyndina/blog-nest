@@ -9,7 +9,7 @@ const config: DataSourceOptions = {
   database: "blog",
   entities: ["dist/**/*.entity{.ts,.js}"],
   dropSchema: false,
-  synchronize: true,
+  synchronize: false,
   migrationsRun: false,
   logging: true,
   migrations: [
