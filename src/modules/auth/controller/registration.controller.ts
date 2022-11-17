@@ -1,4 +1,4 @@
-import { Controller, Body, Post } from '@nestjs/common';
+import { Controller, Body, Post, Get, Request } from '@nestjs/common';
 import { Connection, Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
@@ -23,13 +23,14 @@ export class RegistationController {
     	admin.nickName = createAdmin.nickName;
     	admin.login = createAdmin.login;
     	admin.passwordHash = await bcrypt.hash(createAdmin.password, 10);
+    	console.log(admin);
 
     	return this.registrationService.create(admin);
     }
+
+    @Get('login')	
+	checkLogin(@Request() req) {
+		console.log(req.query.login);
+		return this.registrationService.validateLogin(req.query.login);
+	}
 }
-
-/*nickName: string;
-	login: string;
-	passwordHash?: string;
-
-	passwordHash: await bcrypt.hash('secret', 10),*/

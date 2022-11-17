@@ -13,7 +13,7 @@ export class AuthService {
     ) {
     	this.adminRepository = this.connection.getRepository(Admin);
     }
-
+ 
 	async validateAdmin(login: string, pass: string): Promise<Admin> | null {
 		const admin: Admin = await this.adminRepository.findOne({where: {login}});
 

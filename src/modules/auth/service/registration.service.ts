@@ -19,4 +19,10 @@ export class RegistrationService {
 		return this.adminRepository.save(admin);
 	}
 
+	async validateLogin(login: string): Promise<boolean> {
+		const admin: Admin = await this.adminRepository.findOne({where: {login}});
+        return admin ? true : false;
+		
+	}
+
 }
