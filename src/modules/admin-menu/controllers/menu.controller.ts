@@ -12,8 +12,8 @@ export class MenuController {
 	@Get()	
 	getProfile():  NestedTreeNode[] {
 
-    return this.menuService.getMenu();
-		/*return  [
+    /*return this.menuService.getMenu();*/
+		return  [
     {
         name: 'Contents',
         children: [
@@ -61,6 +61,6 @@ export class MenuController {
             },
         ],
     }
-];*/
+];
 	}
 }
