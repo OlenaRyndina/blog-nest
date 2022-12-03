@@ -9,8 +9,7 @@ export class CityAttractionsService {
 	private cityAttractionsRepository: Repository<CityAttractions>;
 
 	constructor(
-        private connection: Connection
-        
+        private connection: Connection        
     ) {
 		this.cityAttractionsRepository = this.connection.getRepository(CityAttractions);
     } 
@@ -25,7 +24,17 @@ export class CityAttractionsService {
 	}
 
 	async removeAttr(id: string): Promise<void> {
-    await this.cityAttractionsRepository.delete(id);
+        await this.cityAttractionsRepository.delete(id);
+    }
+
+    findOne(id): Promise<CityAttractions> {
+    console.log(id + "service");
+    return this.cityAttractionsRepository.findOneBy({id});
   }
+
+    update(cityAttr): Promise<CityAttractions> {
+        console.log(cityAttr.id + "update");
+        return this.cityAttractionsRepository.save(cityAttr);
+    }
 
 }
